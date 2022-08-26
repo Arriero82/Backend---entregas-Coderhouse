@@ -19,7 +19,8 @@ class Usuario {
         this.libros.push({nombre: a, autor: b});
     }
     getBookNames(){
-        const nomLib = [];
+
+       const nomLib = [];
         for(let libro of this.libros){
             nomLib.push(libro.nombre);
         };

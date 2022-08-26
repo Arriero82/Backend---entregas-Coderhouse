@@ -75,9 +75,9 @@ let productos = new Contenedor('./productos.json');
 //productos.save({title: 'Corolla Cross', price: 70000, thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_957568-MLA50275538933_062022-O.webp'});
 
 
-/* productos.getAll()
+productos.getAll()
 .then((data) => console.log(data))
-.catch((error) => console.log(error)) */
+.catch((error) => console.log(error))
 
 /* productos.getById(1659538064108)
 .then((data) => console.log(data))
