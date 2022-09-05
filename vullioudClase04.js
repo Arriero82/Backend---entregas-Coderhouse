@@ -11,19 +11,20 @@ class Contenedor{
     
     async save(obj){
         let objs = await this.getAll();
-        obj = {id: Date.now(), ...obj}
-        let data = [...objs, obj]
-        try {
+        if(objs.length !== 0){
+            let data = [...objs, {...obj, id: objs[objs.length-1].id + 1} ]
             await fs.writeFile(this.path, JSON.stringify(data))
-            return console.log(`ID assigned:  ${obj.id}`);
-        } catch (error) {
-            throw new Error(`Error al guardar los datos ${error}`)
+            return console.log(`ID assigned:  ${data[data.length-1].id}`);
+        }else{
+            let data = [{...obj, id: 1}]
+            await fs.writeFile(this.path, JSON.stringify(data))
+            return console.log(`ID assigned:  ${data[data.length-1].id}`);
         }
     }
 
     async getById(id){
         let objs = await this.getAll();
-        let obj = objs.filter(o => o.id == id);
+        let obj = objs.filter(obj => obj.id == id);
         if(obj.length==0){
             return `No se puede obtener el dato con el id: ${id}`;
         }
@@ -75,22 +76,22 @@ let productos = new Contenedor('./productos.json');
 //productos.save({title: 'Corolla Cross', price: 70000, thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_957568-MLA50275538933_062022-O.webp'});
 
 
-productos.getAll()
-.then((data) => console.log(data))
-.catch((error) => console.log(error))
-
-/* productos.getById(1659538064108)
+/* productos.getAll()
 .then((data) => console.log(data))
 .catch((error) => console.log(error)) */
 
-/* productos.deleteById(1659538064108)
+/* productos.getById(3)
 .then((data) => console.log(data))
 .catch((error) => console.log(error)) */
 
-/*
-productos.edit({
-    "id": ,
-    "title": "Nissan Cross",
+/* productos.deleteById(3)
+.then((data) => console.log(data))
+.catch((error) => console.log(error)) */
+
+
+/* productos.edit({
+    "id": 1,
+    "title": "Nissan Crosses",
     "price": 70000,
     "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_957568-MLA50275538933_062022-O.webp"
 })
