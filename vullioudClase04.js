@@ -71,8 +71,8 @@ class Contenedor{
 
 }
 
-let productos = new Contenedor('./productos.json');
-//productos.save({title: 'Corolla', price: 50000, thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_708035-MLA50207047549_062022-O.webp'});
+//let productos = new Contenedor('./productos.txt');
+productos.save({title: 'Corolla', price: 50000, thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_708035-MLA50207047549_062022-O.webp'});
 //productos.save({title: 'Corolla Cross', price: 70000, thumbnail: 'https://http2.mlstatic.com/D_NQ_NP_957568-MLA50275538933_062022-O.webp'});
 
 
